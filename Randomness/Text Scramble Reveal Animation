@@ -1,0 +1,10 @@
+text = "HELLO WORLD";
+seedRandom(time*10, true);
+revealProgress = linear(time - inPoint, 0, 1, 0, text.length);
+partial = "";
+charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+for (i = 0; i < text.length; i++) {
+if (i < revealProgress) partial += text[i];
+else partial += charset[Math.floor(random(charset.length))];
+}
+partial;

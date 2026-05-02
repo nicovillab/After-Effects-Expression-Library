@@ -1,0 +1,3 @@
+targetLayer = thisComp.layer("TargetLayer");
+dist = length(thisLayer.position, targetLayer.position);
+value * (1 + dist / 500);

@@ -1,0 +1,42 @@
+// Apply to Source Text
+originalText = text.sourceText; // Replace with your text or use: text.sourceText
+glitchSpeed = effect("Speed")("Slider"); // Glitch speed - Connect to a Slider Control for easier adjustments
+corruption = effect("Corruption")("Slider"); // Corruption level (0-100) - Connect to a Slider Control for easier adjustments
+corruptionLevel = corruption / 100; // 0-1
+// Glitch character sets
+glitchChars = "!@#$%^&*()_+-=[]{}|;':\"<>?,./~`";
+unicodeGlitch = "▓▒░█▄▀■□▪▫◘◙☼♠♣♥♦";
+result = "";
+seedRandom(Math.floor(time * glitchSpeed * 10), true);
+for (i = 0; i < originalText.length; i++) {
+char = originalText.charAt(i);
+if (char == " ") {
+result += " ";
+// Preserve spaces
+}
+else if (random() < corruptionLevel) {
+// Apply corruption
+corruptionType = Math.floor(random(4));
+switch (corruptionType) {
+case 0:
+// Random ASCII glitch
+result += glitchChars.charAt(Math.floor(random(glitchChars.length)));
+break;
+case 1:
+// Unicode blocks
+result += unicodeGlitch.charAt(Math.floor(random(unicodeGlitch.length)));
+break;
+case 2:
+// Duplicate character
+result += char + char;
+break;
+case 3:
+// Random case change
+result += (random() > 0.5) ? char.toUpperCase() : char.toLowerCase();
+break;
+}}
+else {
+result += char;
+// Keep original character
+}}
+result;

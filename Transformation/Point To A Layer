@@ -1,0 +1,5 @@
+target = thisComp.layer("Target");
+targetPos = target.toWorld(target.anchorPoint);
+delta = targetPos - thisLayer.position;
+radians = Math.atan2(delta[1], delta[0]);
+radiansToDegrees(radians);

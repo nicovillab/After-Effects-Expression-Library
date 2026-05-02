@@ -1,0 +1,12 @@
+maxWiggle = 20; 
+// Maximum wiggle amount
+maxFrequency = 10;
+// Maximum wiggle frequency
+maxDistance = 500;
+// Maximum distance
+target = thisComp.layer("TargetLayer").position;
+dist = length(position, target);
+// Map distance to wiggle amount and frequency
+wiggleAmount = linear(dist, 0, maxDistance, maxWiggle, 0);
+wiggleFrequency = linear(dist, 0, maxDistance, maxFrequency, 1);
+wiggle(wiggleFrequency, wiggleAmount);

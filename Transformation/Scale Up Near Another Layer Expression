@@ -1,0 +1,6 @@
+point1=thisLayer.position;
+point2=thisComp.layer('targetLayer').position;
+delta=sub(point1, point2);distance=length(delta);
+startSize = 10; // you can connect this value to a slider
+endSize = 100; // you can connect this value to a slider
+linear(distance, 0, 500, [endSize, endSize], [startSize, startSize]);

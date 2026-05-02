@@ -1,0 +1,3 @@
+thisComp.layer("Main Text Layer").text.sourceText.split(" ") [0] // First part
+thisComp.layer("Main Text Layer").text.sourceText.split(" ") [1] // Second part
+thisComp.layer("Main Text Layer").text.sourceText.split(" ") [2] // Third part (this can continue indefinitely, depending on how many parts you need)

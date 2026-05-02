@@ -1,0 +1,45 @@
+seedRandom(index, true);
+arms = 8;
+radius = 100;
+branchCount = Math.floor(random(3, 6));
+armWidth = 5;
+// Store shape of ONE arm (right side)
+armProfile = [];
+// Generate one arm
+for (j = 1; j <= branchCount; j++) {
+ t = j / (branchCount + 1);
+ dist = t * radius;
+ currentWidth = armWidth * random(0.5, 1.5);
+ armProfile.push({x: currentWidth, y: -dist});
+ branchLen = random(20, 60) * (1 - t);
+ branchAngle = -Math.PI / 3;
+ bx = currentWidth + Math.cos(branchAngle) * branchLen;
+ by = -dist + Math.sin(branchAngle) * branchLen;
+ armProfile.push({x: bx, y: by});
+ armProfile.push({x: currentWidth, y: -(dist + 15)});
+}
+// Rotate helper
+function rotatePoint(x, y, angle) {
+ ca = Math.cos(angle);
+ sa = Math.sin(angle);
+ return [x * ca - y * sa, x * sa + y * ca];
+}
+// Build full snowflake
+pts = [];
+for (i = 0; i < arms; i++) {
+ rotAngle = (i / arms) * Math.PI * 2;
+ // Right side
+ for (k = 0; k < armProfile.length; k++) {
+  p = rotatePoint(armProfile[k].x, armProfile[k].y, rotAngle);
+  pts.push(p);
+ }
+ // Main tip
+ tip = rotatePoint(0, -radius, rotAngle);
+ pts.push(tip);
+ // Left side (mirrored)
+ for (k = armProfile.length - 1; k >= 0; k--) {
+  p = rotatePoint(-armProfile[k].x, armProfile[k].y, rotAngle);
+  pts.push(p);
+ }
+}
+createPath(pts, [], [], true);

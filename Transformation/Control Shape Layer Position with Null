@@ -1,0 +1,4 @@
+control=thisComp.layer("Control NULL"); // your controller null
+controlPos = control.toComp(control.transform.anchorPoint);
+fromComp(controlPos)
+// apply to position property

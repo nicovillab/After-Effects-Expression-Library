@@ -1,0 +1,18 @@
+numRows = 10;
+// Number of rows
+numCols = 10;
+// Number of columns
+freq = 10;
+// Animation speed
+output = "";
+seedRandom(index + Math.floor(time * freq), true);
+for (r = 0; r < numRows; r++) {
+line = "";
+for (c = 0; c < numCols; c++) {
+charCode = Math.floor(random(65, 91));
+// A-Z
+line += String.fromCharCode(charCode) + " ";
+}
+output += line + "\r";
+}
+output;

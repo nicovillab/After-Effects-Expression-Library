@@ -1,0 +1,2 @@
+seedRandom(index, true);
+value + random([-50, -50], [50, 50]);

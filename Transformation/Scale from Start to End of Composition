@@ -1,0 +1,6 @@
+startScale = 100;
+endScale = 120;
+startTime = 0;
+endTime = thisComp.duration;
+progress = linear(time, startTime, endTime, startScale, endScale);
+[progress, progress];

@@ -1,0 +1,6 @@
+if (time - inPoint < 1){
+Math.min(random(0, time - inPoint) * 100, value);
+}
+else {
+value;
+}

@@ -1,0 +1,21 @@
+seedRandom(index, true);
+speed = random(100, 400);
+windAmt = random(-100, 100);
+swayFreq = random(0.5, 2);
+startOffset = random(0, 10000);
+startX = random(0, thisComp.width);
+// We measure size at time 0 to prevent jitter if the flake rotates
+rect = sourceRectAtTime(0, false);
+scaleY = transform.scale[1] / 100;
+objHeight = rect.height * scaleY;
+// We add a safety buffer so it doesn't pop visibly
+safetyBuffer = 100;
+// The total distance the flake needs to travel before resetting
+travelDistance = thisComp.height + (objHeight * 2) + safetyBuffer;
+t = time + startOffset;
+// Vertical Movement
+startY = -objHeight - safetyBuffer;
+y = startY + ((t * speed) % travelDistance);
+// Horizontal Sway
+x = startX + Math.sin(t * swayFreq) * windAmt;
+[x, y];

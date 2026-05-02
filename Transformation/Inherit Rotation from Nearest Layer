@@ -1,0 +1,13 @@
+minDist = 1e6;
+closestRot = 0;
+for (i = 1; i <= thisComp.numLayers; i++)
+{
+if (i != index)
+{
+d = length(position, thisComp.layer(i).position);
+if (d < minDist)
+{
+minDist = d;
+closestRot = thisComp.layer(i).rotation;
+}}}
+closestRot;

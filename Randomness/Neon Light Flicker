@@ -1,0 +1,7 @@
+// Simulates a frozen neon sign struggling to stay on
+probability = 85; // % chance to be fully visible (0-100)
+minOpacity = 70; // 0-100
+// High speed flicker
+seedRandom(Math.floor(time * 20), true);
+val = random(0, 100);
+(val < probability) ? value : minOpacity;

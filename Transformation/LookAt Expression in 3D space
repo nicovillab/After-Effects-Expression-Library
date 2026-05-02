@@ -1,0 +1,2 @@
+targetLayer = thisComp.layer("Target");
+lookAt(thisComp.layer("Point").position, targetLayer.position)

@@ -1,0 +1,58 @@
+w = effect("Width")("Slider");
+h = effect("Height")("Slider");
+rTL = effect("Top Left Roundness")("Slider");
+rTR = effect("Top Right Roundness")("Slider");
+rBR = effect("Bottom Right Roundness")("Slider");
+rBL = effect("Bottom Left Roundness")("Slider");
+// Clamp each corner's roundness
+rTL = Math.max(0, Math.min(rTL, Math.min(w, h) / 2));
+rTR = Math.max(0, Math.min(rTR, Math.min(w, h) / 2));
+rBR = Math.max(0, Math.min(rBR, Math.min(w, h) / 2));
+rBL = Math.max(0, Math.min(rBL, Math.min(w, h) / 2));
+// Bezier control handle coefficients for each corner
+ctrlTL = rTL * 0.55228475;
+ctrlTR = rTR * 0.55228475;
+ctrlBR = rBR * 0.55228475;
+ctrlBL = rBL * 0.55228475;
+pts = [];
+inTan = [];
+outTan = [];
+function add(p, inT, outT) {
+pts.push(p);  
+inTan.push(inT);
+outTan.push(outT);
+}
+// Top Left Corner
+if (rTL > 0) {
+add([rTL, 0], [0, 0], [-ctrlTL, 0]);
+add([0, rTL], [0, -ctrlTL], [0, 0]);
+} else {
+add([0, 0], [0, 0], [0, 0]);
+}
+// Left side (only add bottom-left corner point if it's not rounded)
+if (rBL == 0) {  add([0, h], [0, 0], [0, 0]);
+}
+// Bottom Left Corner
+if (rBL > 0) {
+add([0, h - rBL], [0, 0], [0, ctrlBL]);
+add([rBL, h], [-ctrlBL, 0], [0, 0]);
+}
+// Bottom side (only add bottom-right corner point if it's not rounded)
+if (rBR == 0) {
+add([w, h], [0, 0], [0, 0]);
+}
+// Bottom Right Corner
+if (rBR > 0) {
+add([w - rBR, h], [0, 0], [ctrlBR, 0]);
+add([w, h - rBR], [0, ctrlBR], [0, 0]);
+}
+// Right side (only add top-right corner point if it's not rounded)
+if (rTR == 0) {
+add([w, 0], [0, 0], [0, 0]);
+}
+// Top Right Corner
+if (rTR > 0) {
+add([w, rTR], [0, 0], [0, -ctrlTR]);
+add([w - rTR, 0], [ctrlTR, 0], [0, 0]);
+}
+createPath(pts, inTan, outTan, true);

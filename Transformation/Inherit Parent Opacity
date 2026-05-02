@@ -1,0 +1,1 @@
+(hasParent) ? parent.opacity : value;

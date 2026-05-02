@@ -1,0 +1,7 @@
+sensitivity = 50;
+// Lower = more reactive. You can connect this to a Slider Control
+maxAmount = 20;
+// Maximum wiggle intensity. Also connectable to a slider
+speedValue = transform.position.speed;
+amt = clamp(speedValue / sensitivity, 0, maxAmount);
+wiggle(10, amt);

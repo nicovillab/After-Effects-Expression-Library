@@ -1,0 +1,9 @@
+function lookAtMe(fromPt, toPt){    
+lkAt = lookAt(fromPt, toPt);
+if (toPt[1] > fromPt[1]){
+return 180-lkAt[1]; }
+else {
+return lkAt[1]; }}
+p0= transform.position; // look from point
+p1=thisComp.layer("targetLayer").transform.position; // looked-at point
+lookAtMe(p0, p1)

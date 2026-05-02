@@ -1,0 +1,10 @@
+// add to Start of Ramp
+rect = thisLayer.sourceRectAtTime(time, false);
+scaleFactor = thisLayer.scale[1] / 100;  // Y scale factor
+xPos = thisLayer.position[0];
+yPos = thisLayer.position[1] - (rect.height / 2) * scaleFactor;
+[xPos, yPos]; // add to End of Ramp
+rect = thisLayer.sourceRectAtTime(time, false);
+scaleFactor = thisLayer.scale[1] / 100; // Y scale factor
+xPos = thisLayer.position[0];
+yPos = thisLayer.position[1] + (rect.height / 2) * scaleFactor;[xPos, yPos];

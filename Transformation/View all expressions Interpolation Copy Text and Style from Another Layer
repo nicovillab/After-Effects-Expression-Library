@@ -1,0 +1,3 @@
+const mainTextLayer = thisComp.layer("text1");
+const mainTextStyle = mainTextLayer.text.sourceText.getStyleAt(0);
+mainTextStyle.setText(mainTextLayer.text.sourceText.value);

@@ -1,0 +1,56 @@
+// Fetch the dropdown value
+anchorOption = effect("Dropdown Menu Control")("Menu");
+// Get the text bounds
+rect = sourceRectAtTime((inPoint+outPoint)/2, false);
+top = rect.top;
+left = rect.left;
+w = rect.width;
+h = rect.height;
+// Default values
+x = 0;
+y = 0;
+// Anchor point switch
+if (anchorOption == 1) {
+ // Center  
+x = left + w/2;
+y = top + h/2;
+} else if (anchorOption == 2) {
+// Top Left  
+x = left;
+y = top;
+} 
+else if (anchorOption == 3) {
+// Top  
+x = left + w/2;
+y = top;
+} 
+else if (anchorOption == 4) { 
+// Top Right  
+x = left + w;
+y = top;
+} 
+else if (anchorOption == 5) {
+// Right  
+x = left + w;
+y = top + h/2;
+} else if (anchorOption == 6) { 
+// Bottom Right  
+x = left + w;
+y = top + h;
+}
+else if (anchorOption == 7) {
+// Bottom  
+x = left + w/2;
+y = top + h;
+}
+else if (anchorOption == 8) {
+// Bottom Left  
+x = left; 
+y = top + h;
+}
+else if (anchorOption == 9) {
+// Left  
+x = left;
+y = top + h/2;
+}
+[x, y];

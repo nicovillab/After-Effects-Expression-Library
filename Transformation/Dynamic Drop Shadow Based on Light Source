@@ -1,0 +1,16 @@
+// Apply this to the Direction property of the Drop Shadow effect
+light = thisComp.layer("Light Source").position;
+obj = thisLayer.position;
+angle = radiansToDegrees(Math.atan2(obj[0] - light[0], light[1] - obj[1]));
+angle; // Apply this to the Distance property of the Drop Shadow effect
+light = thisComp.layer("Light Source").position;
+obj = thisLayer.position;
+maxDist = 100; // Maximum shadow length
+dist = length(light, obj);
+linear(dist, 0, 500, 10, maxDist);
+// Apply this to the Softness property of the Drop Shadow effect
+light = thisComp.layer("Light Source").position;
+obj = thisLayer.position;
+maxSoft = 300; // Maximum blur
+dist = length(light, obj);
+linear(dist, 0, 500, 5, maxSoft);

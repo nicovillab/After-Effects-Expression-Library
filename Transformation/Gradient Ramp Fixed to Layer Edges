@@ -1,0 +1,9 @@
+// add to Start of Ramp
+rect = thisLayer.sourceRectAtTime();
+xPos = rect.left + rect.width / 2; // Center X
+yPos = rect.top;  // Top Y
+[thisLayer.toComp([xPos, yPos])[0], thisLayer.toComp([xPos, yPos])[1]]; // add to End of Ramp
+rect = thisLayer.sourceRectAtTime();
+xPos = rect.left + rect.width / 2;  // Center X
+yPos = rect.top + rect.height;  // Bottom Y
+[thisLayer.toComp([xPos, yPos])[0], thisLayer.toComp([xPos, yPos])[1]];

@@ -1,0 +1,13 @@
+// Palette Red, Green, Gold, White
+colors = [
+[0.8, 0, 0, 1],
+[0, 0.5, 0, 1],
+[1, 0.8, 0, 1],
+[1, 1, 1, 1]
+];
+speed = 3; // Changes per second
+idx = Math.floor(time * speed);
+// Randomize based on layer index so lights don't sync
+seedRandom(index + idx, true);
+choice = Math.floor(random(colors.length));
+colors[choice];

@@ -1,0 +1,18 @@
+// For Position
+var control = thisComp.layer("Controller");
+var numCols = Math.floor(control.effect("Columns")("Slider"));
+var tileIndex = index - control.index - 1;
+var col = tileIndex % numCols;
+var row = Math.floor(tileIndex / numCols);
+var colW = thisComp.width / numCols;
+var firstTile = thisComp.layer(control.index + 1);
+var rowH = firstTile.height / firstTile.width * colW;
+var x = colW * (col + 0.5);
+var y = rowH * (row + 0.5);
+[x, y];
+// For Scale
+var control = thisComp.layer("Controller");
+var numCols = Math.floor(control.effect("Columns")("Slider"));
+var colW = thisComp.width / numCols;
+var scale = colW / width * 100;
+[scale, scale];

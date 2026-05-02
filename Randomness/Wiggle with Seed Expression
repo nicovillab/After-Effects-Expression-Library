@@ -1,0 +1,2 @@
+seedRandom(index, true);
+wiggle(2, 50)

@@ -1,0 +1,5 @@
+top = sourceRectAtTime().top;
+left = sourceRectAtTime().left;
+x = left + (sourceRectAtTime().width / 2);
+y = top + (sourceRectAtTime().height / 2);
+[x,y]

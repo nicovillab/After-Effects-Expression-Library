@@ -1,0 +1,38 @@
+snapTo = effect("Snap to (corner)")("Menu");
+targetMode = effect("Snap to (target)")("Menu"); // 1 = layer, 0 = comp
+targetLayer = effect("Target Layer")("Layer");
+xOffset = effect("X offset")("Slider");
+yOffset = effect("Y offset")("Slider");
+w = thisComp.width;
+h = thisComp.height;
+var x = 0;
+var y = 0;
+if (targetMode == 1) {
+ // Snap to LAYER
+ r = targetLayer.sourceRectAtTime(time, false);
+ var localPos = [0, 0];
+ if (snapTo == 1) localPos = [r.left + r.width/2, r.top + r.height/2]; // Center
+ else if (snapTo == 2) localPos = [r.left, r.top]; // Top Left
+ else if (snapTo == 3) localPos = [r.left + r.width/2, r.top]; // Top
+ else if (snapTo == 4) localPos = [r.left + r.width, r.top]; // Top Right
+ else if (snapTo == 5) localPos = [r.left + r.width, r.top + r.height/2]; // Right
+ else if (snapTo == 6) localPos = [r.left + r.width, r.top + r.height]; // Bottom Right
+ else if (snapTo == 7) localPos = [r.left + r.width/2, r.top + r.height]; // Bottom
+ else if (snapTo == 8) localPos = [r.left, r.top + r.height]; // Bottom Left
+ else if (snapTo == 9) localPos = [r.left, r.top + r.height/2]; // Left
+ worldPos = targetLayer.toComp(localPos);
+ x = worldPos[0];
+ y = worldPos[1];
+} else {
+// Snap to COMP
+ if (snapTo == 1) {x = w / 2; y = h / 2; } // Center
+ else if (snapTo == 2) { x = 0; y = 0; } // Top Left
+ else if (snapTo == 3) { x = w / 2; y = 0; } // Top
+ else if (snapTo == 4) { x = w; y = 0; } // Top Right
+ else if (snapTo == 5) { x = w; y = h / 2; } // Right
+ else if (snapTo == 6) { x = w; y = h; } // Bottom Right
+ else if (snapTo == 7) { x = w / 2; y = h; } // Bottom
+ else if (snapTo == 8) { x = 0; y = h; } // Bottom Left
+ else if (snapTo == 9) { x = 0; y = h / 2; } // Left
+}
+[x + xOffset, y + yOffset];

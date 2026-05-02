@@ -1,0 +1,12 @@
+// Add to Source Text
+textSize = effect("Font Size")("Slider");
+targetWidth = effect("Text Box Width")("Slider");
+textLeading = effect("Leading")("Slider");
+originalBoxWidth = 1920;
+boxScale = targetWidth / originalBoxWidth;
+text.sourceText.style.setFontSize(textSize / boxScale).setLeading(textSize * textLeading / boxScale);
+// Add to Scale
+targetWidth = effect("Text Box Width")("Slider");
+originalBoxWidth = 1920;
+boxScale = targetWidth / originalBoxWidth;
+value * boxScale;

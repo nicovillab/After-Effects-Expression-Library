@@ -1,0 +1,11 @@
+minInterval = 1.5;
+maxInterval = 2.5;
+minFlicker = 0.5;
+maxFlicker = 1;
+segIndex = Math.floor(time / maxInterval);
+seedRandom(segIndex, true);
+segStart = segIndex * maxInterval;
+segEnd = segStart + random(minInterval, maxInterval);
+flickerTime = random(minFlicker, maxFlicker);
+seedRandom(1, false);
+(time > segEnd - flickerTime) ? random(0, 100) : 100;

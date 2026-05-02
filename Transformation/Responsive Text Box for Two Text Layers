@@ -1,0 +1,15 @@
+txt1 = thisComp.layer("text1");
+txt2 = thisComp.layer("text2");
+// Get source rects
+rect1 = txt1.sourceRectAtTime(time);
+rect2 = txt2.sourceRectAtTime(time);
+// Get world positions
+pos1 = txt1.toComp([rect1.left + rect1.width / 2, rect1.top]);
+pos2 = txt2.toComp([rect2.left + rect2.width / 2, rect2.top + rect2.height]);
+// HEIGHT = vertical distance between top of text1 and bottom of text2
+height = Math.abs(pos2[1] - pos1[1]);
+// WIDTH = whichever text is wider
+width = Math.max(rect1.width, rect2.width);
+padding = 100;
+// Optional padding
+[width + padding, height + padding]

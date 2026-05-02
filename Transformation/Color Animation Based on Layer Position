@@ -1,0 +1,6 @@
+xNorm = linear(position[0], 0, thisComp.width, 0, 1); // Normalize X position
+yNorm = linear(position[1], 0, thisComp.height, 0, 1); // Normalize Y position
+r = linear(xNorm, 0, 1, 0, 255); // Map X to Red
+g = linear(yNorm, 0, 1, 0, 255); // Map Y to Green
+b = 255 - (r + g) / 2; // Complementary Blue
+[r, g, b, 255] / 255; // Normalize to RGB

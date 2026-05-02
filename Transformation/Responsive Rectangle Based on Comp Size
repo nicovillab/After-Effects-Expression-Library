@@ -1,0 +1,2 @@
+var c = thisComp;
+[c.width, c.height]

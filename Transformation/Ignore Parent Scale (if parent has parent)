@@ -1,0 +1,7 @@
+L = thisLayer;
+s = transform.scale.value;
+while (L.hasParent){
+ L = L.parent;
+ for (i = 0; i < s.length; i++) s[i] *= 100/L.transform.scale.value[i]
+}
+s

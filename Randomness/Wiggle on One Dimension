@@ -1,0 +1,4 @@
+frequency = 2;
+amplitude = 10;
+w = wiggle(frequency, amplitude);
+[w[0],value[1]]

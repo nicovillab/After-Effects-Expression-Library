@@ -1,0 +1,10 @@
+textWidth = sourceRectAtTime(time, false).width;
+defaultLimit = thisComp.width;
+customLimit = effect("Width Limit")("Slider");
+widthLimit = (customLimit > 0) ? customLimit : defaultLimit;
+if (textWidth > 0) {
+scaleFactor = (widthLimit / textWidth) * 100;
+clampedScale = clamp(scaleFactor, 0, 100);
+[clampedScale, clampedScale];}
+else {
+value;}

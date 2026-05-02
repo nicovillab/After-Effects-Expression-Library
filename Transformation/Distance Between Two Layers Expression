@@ -1,0 +1,5 @@
+target = thisComp.layer("Target Layer");
+// pick your target layer
+p1 = position;
+p2 = target.position;
+length(p1, p2);

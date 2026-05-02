@@ -1,0 +1,12 @@
+startSize = 60;
+// Starting font size
+step = 10;
+// Decrease size per threshold
+minFontSize = 30;
+// Prevent font from getting too small
+charThreshold = 90;
+// Shrink once per this many characters
+charCount = text.sourceText.length;
+stepsToShrink = Math.floor(charCount / charThreshold);
+newSize = Math.max(minFontSize, startSize - (stepsToShrink * step));
+text.sourceText.style.setFontSize(newSize);

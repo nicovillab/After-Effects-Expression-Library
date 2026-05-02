@@ -1,0 +1,2 @@
+flip = (position[1] > thisComp.height / 2) ? [100, 100] : [100, -100];
+flip;

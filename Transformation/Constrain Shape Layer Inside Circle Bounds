@@ -1,0 +1,12 @@
+largeCircle = thisComp.layer("LargeCircle");
+largePosition = largeCircle.position;
+largeRadius = largeCircle.content("Ellipse 1").content("Ellipse Path 1").size[0] / 2;
+smallRadius = content("Ellipse 1").content("Ellipse Path 1").size[0] / 2;
+delta = position - largePosition;
+distance = length(delta);
+if (distance > (largeRadius - smallRadius)) {
+constrainedDelta = normalize(delta) * (largeRadius - smallRadius);
+constrainedPosition = largePosition + constrainedDelta;}
+else {
+constrainedPosition = position;}
+constrainedPosition;

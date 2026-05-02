@@ -1,0 +1,10 @@
+// Right-align the FIRST layer.
+// Left-align the SECOND layer.
+// Parent the second layer to the first and position it accordingly.
+// Expression for the FIRST layer's position (parent layer).
+// Apply this expression to the position property of the FIRST layer.
+t1 = thisLayer.sourceRectAtTime();
+t2 = thisComp.layer("Text 2").sourceRectAtTime();
+margin = thisComp.layer("Text 2").position[0];
+x = t1.width - margin - t2.width;
+[thisComp.width / 2, thisComp.height / 2] + [x / 2, t1.height / 2];

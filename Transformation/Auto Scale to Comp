@@ -1,0 +1,28 @@
+maintainRatio = effect("Maintain Ratio")("Checkbox");
+fillMode = effect("Fit / Fill")("Checkbox");
+lw = thisLayer.width;
+lh = thisLayer.height;
+cw = thisComp.width;
+ch = thisComp.height;
+aspectLayer = lw / lh;
+aspectComp = cw / ch;
+if (maintainRatio == 1) {
+ if (fillMode == 0){
+  // FIT (contain without cropping)
+  scaleFactor = Math.min(cw / lw, ch / lh);
+  [scaleFactor * 100, scaleFactor * 100];
+ } else {
+ // FILL (cover full comp, may crop)
+ scaleFactor = Math.max(cw / lw, ch / lh);
+ [scaleFactor * 100, scaleFactor * 100];
+ }
+} else {
+ // No ratio constraint, stretch to fit/fill comp
+ if (fillMode == 0) {
+  [cw / lw * 100, ch / lh * 100];
+  // Fit (stretch)
+ } else {
+  [cw / lw * 100, ch / lh * 100];
+  // Fill (also stretches in this case)
+ }
+}

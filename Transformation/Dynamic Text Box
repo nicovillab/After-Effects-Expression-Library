@@ -1,0 +1,11 @@
+// Shape layer size property
+subText = thisComp.layer("index-1");
+textWidth = subText.sourceRectAtTime(time).width + 100;
+textHeight = subText.sourceRectAtTime(time).height + 100;
+[textWidth, textHeight]
+// Text layer anchor point
+top = sourceRectAtTime().top;
+left = sourceRectAtTime().left;
+x = left + (sourceRectAtTime().width / 2);
+y = top + (sourceRectAtTime().height / 2);
+[x,y]

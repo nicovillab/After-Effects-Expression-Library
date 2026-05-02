@@ -1,0 +1,2 @@
+seedRandom(index,true);
+myValue = random(50) ;

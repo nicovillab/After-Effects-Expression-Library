@@ -1,0 +1,14 @@
+// Add to Source Text
+textSize = 50;
+// Font size
+textLeading = 1;
+// Line spacing (leading)
+originalBoxWidth = 1920;
+targetWidth = thisComp.width;
+boxScale = targetWidth / originalBoxWidth;
+text.sourceText.style.setFontSize(textSize / boxScale).setLeading(textSize * textLeading / boxScale);
+// Add to Scale
+targetWidth = thisComp.width;
+originalBoxWidth = 1920;
+boxScale = targetWidth / originalBoxWidth;
+value * boxScale;
