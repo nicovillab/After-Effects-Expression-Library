@@ -1,0 +1,11 @@
+key1Value = effect("Key 1")("Slider"); // Slider for first keyframe value
+key2Value = effect("Key 2")("Slider"); // Slider for second keyframe value
+key1Time = key(1).time;key2Time = key(2).time;// Preserve Graph Editor's easing
+if (time <= key1Time){
+key1Value;}
+else if
+(time >= key2Time){
+key2Value;}
+else{
+originalValue = valueAtTime(time);
+linear(originalValue, valueAtTime(key1Time), valueAtTime(key2Time), key1Value, key2Value);}

@@ -1,0 +1,6 @@
+// Opacity property
+days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+targetDay = "Tuesday";
+// Change this to desired day
+today = days[(new Date(Date.now())).getDay()];
+today == targetDay ? 100 : 0;

@@ -1,0 +1,4 @@
+frequency = 1;
+amplitude = 45;
+decay = 0.1;
+amplitude * Math.sin(time * frequency * Math.PI * 2) * Math.exp(-decay * time);

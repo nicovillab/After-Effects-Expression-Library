@@ -1,0 +1,13 @@
+// Apply to Path
+turns = effect("Turns")("Slider");
+rad = effect("Radius")("Slider");
+pnts = effect("Points")("Slider");
+pts = [];
+for (i = 0; i <= pnts; i++){
+ t = i / pnts;
+ angle = t * Math.PI * 2 * turns;
+ r = t * rad;  x = Math.cos(angle) * r;
+ y = Math.sin(angle) * r;
+pts.push([x, y]);
+}
+createPath(pts, [], [], false);

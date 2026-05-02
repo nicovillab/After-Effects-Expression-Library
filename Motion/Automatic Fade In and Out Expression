@@ -1,0 +1,7 @@
+fade = 1;
+fadeIn = (time-inPoint)/fade;
+fadeOut = (outPoint - time)/fade;
+if (time outPoint - fade){
+ease(fadeOut,0,1)*value}else{
+value
+}

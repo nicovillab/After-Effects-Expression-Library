@@ -1,0 +1,26 @@
+// Get layer dimensions
+layerBounds = sourceRectAtTime(time, false);
+layerWidth = layerBounds.width;
+layerHeight = layerBounds.height;
+// Get comp dimensions
+compWidth = thisComp.width;
+compHeight = thisComp.height;
+// Set automatic boundaries based on layer size
+minX = layerWidth / 2;
+maxX = compWidth - layerWidth / 2;
+minY = layerHeight / 2;
+maxY = compHeight - layerHeight / 2;
+// Speed settings
+speedX = 300;
+speedY = 200;
+// Time calculation
+t = time - inPoint;
+// Calculate position
+x = minX + (t * speedX) % ((maxX - minX) * 2);
+y = minY + (t * speedY) % ((maxY - minY) * 2);
+// Reflect position if it hits the bounds
+if (x > maxX) x = maxX - (x - maxX);
+if (x < minX) x = minX + (minX - x);
+if (y > maxY) y = maxY - (y - maxY);
+if (y < minY) y = minY + (minY - y);
+[x, y];

@@ -1,0 +1,2 @@
+select = thisComp.layer("CONTROLS").effect("Dropdown")("Menu"); // pick whip to your dropdown
+(select == parseInt(thisLayer.name[0])) ? value : 0;

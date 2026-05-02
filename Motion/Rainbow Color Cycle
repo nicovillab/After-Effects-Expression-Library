@@ -1,0 +1,4 @@
+// Apply to Color property
+speed = 1; // Cycles per second
+hsl = [time * speed % 1, 1, 0.5, 1];
+hslToRgb(hsl);

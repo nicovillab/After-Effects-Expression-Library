@@ -1,0 +1,28 @@
+// DNA Helix – Apply to Path (one strand per layer)
+helixHeight = effect("Helix Height")("Slider"); // vertical length
+turns = effect("Turns")("Slider"); // number of spiral turns
+offset = effect("Offset")("Slider") * Math.PI / 180; // horizontal strand
+speed = effect("Speed")("Slider") * Math.PI / 180; // rotation speed
+radius = effect("Radius")("Slider"); // helix thickness
+depth = effect("Depth")("Slider"); // pseudo-3D depth
+segments = effect("Segments")("Slider"); // resolution (optional slider)
+pts = [];
+inT = [];
+outT = [];
+for (i = 0; i <= segments; i++) {
+ t = i / segments;
+// Helix movement
+angle = t * turns * 2 * Math.PI + offset + time * speed;
+x = Math.cos(angle) * radius;
+y = -helixHeight/2 + t * helixHeight;
+z = Math.sin(angle) * radius;
+// Pseudo 3D projection
+pts.push([x + z * depth, y]);
+// Curved path smoothing
+nextAngle = angle + (2 * Math.PI / segments);
+tx = Math.cos(nextAngle) * radius;
+ty = helixHeight / segments * 0.5;
+inT.push([-tx, -ty]);
+outT.push([tx, ty]);
+}
+createPath(pts, inT, outT, false);

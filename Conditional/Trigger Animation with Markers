@@ -1,0 +1,25 @@
+markerLayer = thisLayer;
+if (markerLayer){
+if (markerLayer.marker.numKeys > 0){
+var n = markerLayer.marker.nearestKey(time).index;
+if (markerLayer.marker.key(n).time > time) n--;
+if (n > 0) {
+t = time - markerLayer.marker.key(n).time;
+animStart = key(1).time;
+animEnd = key(numKeys).time;
+animDur = animEnd - animStart;
+if (t >= 0 && t <= animDur) {
+valueAtTime(animStart + t);}
+else if (t > animDur) {
+valueAtTime(animEnd); }
+else {
+valueAtTime(animStart);
+}}
+else{
+value;
+}}
+else {
+value;}}
+else {
+value;
+}

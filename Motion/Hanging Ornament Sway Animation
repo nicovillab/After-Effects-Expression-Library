@@ -1,0 +1,6 @@
+freq = 1.5;
+amp = 15;
+decay = 0; // Set to 0.1 if you want it to stop eventually
+// Offset phase by index so ornaments sway differently
+offset = index * 10;
+Math.sin((time + offset) * freq) * amp;

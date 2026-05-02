@@ -1,0 +1,18 @@
+// Settings
+var restLength = 20;
+var damp = 0.95;
+var leader = thisComp.layer("leader");
+// Initialize time and position
+var fDur = thisComp.frameDuration;
+var currTime = time;
+var p2 = position.valueAtTime(0);
+var v2 = 0; // Loop through each frame up to the current time
+for (var t = 0; t <= currTime; t += fDur) {
+var p1 = leader.transform.position.valueAtTime(t);
+var delta = p2 - p1;
+var dist = length(delta) - restLength;
+var a = normalize(delta) * (dist * fDur * 2);
+v2 = (v2 - a) * damp;
+p2 += v2;
+}
+p2;

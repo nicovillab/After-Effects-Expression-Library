@@ -1,0 +1,18 @@
+bpm = 72; // Beats Per Minute
+intensity = 15; // How much to scale up (in %)
+period = 60 / bpm;
+t = time % period;
+// Simulation constants
+decay = 20; // How snappy the beat is
+gap = 0.35; // Time delay between lub and dub in seconds
+pulse1 = Math.sin(t * 20) * Math.exp(-decay * t);
+if (pulse1 < 0) pulse1 = 0;
+t2 = t - gap;
+pulse2 = 0;
+if (t2 > 0) {
+ pulse2 = Math.sin(t2 * 20) * Math.exp(-decay * t2);
+ if (pulse2 < 0) pulse2 = 0;
+}
+totalPulse = pulse1 + (pulse2 * 0.8);
+s = value[0] + (totalPulse * intensity);
+[s, s];

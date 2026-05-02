@@ -1,0 +1,2 @@
+value * effect("Control Name")("Checkbox"); 
+// replace Checkbox Control with your checkbox control

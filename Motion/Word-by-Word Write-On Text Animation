@@ -1,0 +1,4 @@
+words = text.sourceText.split(" ");
+timePerWord = 0.2;
+visibleWords = Math.floor((time - inPoint) / timePerWord);
+words.slice(0, visibleWords).join(" ");

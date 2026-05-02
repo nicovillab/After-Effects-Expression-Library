@@ -1,0 +1,36 @@
+// Apply to Path
+toothCount = Math.floor(effect("Tooth Count")("Slider"));
+gearRadius = effect("Gear Radius")("Slider");
+toothHeight = effect("Tooth Height")("Slider");
+pts = [];
+inTangents = [];
+outTangents = [];
+// One tooth = 4 points (root → rise → top → fall)
+for (i = 0; i < toothCount * 4; i++) {
+angle = (i / (toothCount * 4)) * Math.PI * 2;
+// Determine which part of the tooth we're on
+phase = i % 4;
+radius = gearRadius;
+switch (phase) {
+case 0:
+// Root
+radius = gearRadius * 0.85;
+break;
+case 1:
+// Rise
+case 2:
+// Top
+radius = gearRadius + toothHeight;
+break;
+case 3:
+// Fall
+radius = gearRadius * 0.85;
+break;
+}
+x = Math.cos(angle) * radius;
+y = Math.sin(angle) * radius;
+pts.push([x, y]);
+inTangents.push([0, 0]);
+outTangents.push([0, 0]);
+}
+createPath(pts, inTangents, outTangents, true);

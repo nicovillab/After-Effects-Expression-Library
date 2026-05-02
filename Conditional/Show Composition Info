@@ -1,0 +1,59 @@
+//  Apply to Source Text
+try {
+showDuration = effect("Show Duration")("Checkbox").value;
+}
+catch(e) {
+showDuration = 1; }
+try {
+showFrameRate = effect("Show Frame Rate")("Checkbox").value; }
+catch(e) {
+showFrameRate = 1;
+}
+try {
+showResolution = effect("Show Resolution")("Checkbox").value;
+} catch(e) {
+showResolutionx = 1;
+}
+try {
+showLayerCount = effect("Show Layer Count")("Checkbox").value;
+}
+catch(e){
+showLayerCount = 1;
+}
+try{
+showCurrentTime = effect("Show Current Time")("Checkbox").value;
+}
+catch(e) {
+showCurrentTime = 1;
+}stats = "";
+// Duration
+if (showDuration == 1) {
+ d = thisComp.duration;
+ min = Math.floor(d / 60);
+ sec = Math.floor(d % 60);
+ fr = Math.floor((d % 1) / thisComp.frameDuration);
+ stats += "Duration: " + (min < 10 ? "0" : "") + min + ":" + (sec < 10 ? "0" : "") + sec + ":" + (fr < 10 ? "0" : "") + fr + "\n";
+}
+// Frame Rate
+if (showFrameRate == 1) {
+ fps = 1 / thisComp.frameDuration;
+ frameDisplay = (fps % 1 === 0) ? fps.toFixed(0) : fps.toFixed(2);
+ stats += "Frame Rate: " + frameDisplay + " fps\n";
+}
+// Resolution
+if (showResolution == 1) {
+ stats += "Resolution: " + thisComp.width + "x" + thisComp.height + "\n";
+}
+// Layer Count
+if (showLayerCount == 1){
+ stats += "Layers: " + thisComp.numLayers + "\n";
+}
+// Current Time
+if (showCurrentTime == 1){
+ t = time;
+ tmin = Math.floor(t / 60);
+ tsec = Math.floor(t % 60);
+ tfr = Math.floor((t % 1) / thisComp.frameDuration);
+ stats += "Time: " + (tmin < 10 ? "0" : "") + tmin + ":" + (tsec < 10 ? "0" : "") + tsec + ":" + (tfr < 10 ? "0" : "") + tfr;
+}
+stats;

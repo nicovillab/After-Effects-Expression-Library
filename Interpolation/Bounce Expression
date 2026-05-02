@@ -1,0 +1,9 @@
+amp = 50;
+freq = 2;
+decay = 5;
+n = 0;
+if (numKeys > 0 && time > key(numKeys).time) {
+    t = time - key(numKeys).time;
+    n = Math.sin(freq * t * Math.PI * 2) * amp * Math.exp(-decay * t);
+}
+value + [n, n];

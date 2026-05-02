@@ -1,0 +1,34 @@
+fadeDuration = effect("Fade Duration")("Slider");
+// Duration of the fade (in seconds)
+zeroValue = effect("Zero Value")("Slider");
+// Value at the start and end
+finalValue = effect("Final Value")("Slider");
+// Constant value during playback
+enableFadeIn = effect("Enable Fade In")("Checkbox") == 1;
+enableFadeOut = effect("Enable Fade Out")("Checkbox") == 1;
+currentTime = time - inPoint;
+layerOut = inPoint + thisLayer.outPoint - thisLayer.inPoint;
+// Calculates actual outPoint inside the parent comp
+timeToEnd = layerOut - time;
+// Time remaining before fade out
+if (enableFadeIn && currentTime < fadeDuration) {
+// Fade-in logic
+t = currentTime / fadeDuration;
+fadeValue = ease(t, 0, 1, zeroValue, finalValue);
+}
+else if (enableFadeOut && timeToEnd < fadeDuration)
+{
+// Fade-out logic
+t = (fadeDuration - timeToEnd) / fadeDuration;
+fadeValue = ease(t, 0, 1, finalValue, zeroValue);
+}
+else if (enableFadeIn || enableFadeOut){
+// Hold value if either fade is enabled and active
+fadeValue = finalValue;
+}
+else
+{
+// No fading applied — use final value
+fadeValue = finalValue;
+}
+fadeValue;

@@ -1,0 +1,30 @@
+vel0Y = effect("Initial Velocity Y")("Slider"); // initial vertical velocity in px/s (positive = down)
+vel0X = effect("Initial Velocity X")("Slider"); // initial horizontal velocity in px/s
+g_m = effect("Gravity")("Slider"); // gravity in m/s² (e.g. 9.81)
+g = g_m * 100; // convert to px/s²
+bounce = effect("Bounce %")("Slider") / 100; // elasticity ratio (0–100%)
+drag = effect("Air Drag %")("Slider") / 100; // air drag per second (0–100%)
+fric = effect("Ground Friction %")("Slider") / 100; // friction applied to horizontal velocity on bounce (0–100%)
+floorY = effect("Floor Y")("Slider"); // Y-position of the “ground” in px
+startPos = position.valueAtTime(inPoint); // record starting position at layer inPoint
+t = time - inPoint;
+dt = thisComp.frameDuration;
+steps = Math.floor(t / dt);
+vx = vel0X;
+vy = vel0Y;
+x = startPos[0];
+y = startPos[1];
+for (i = 0; i < steps; i++) {
+  vy += g * dt;
+  vx *= 1 - drag * dt;
+  vy *= 1 - drag * dt;
+  x += vx * dt;
+  y += vy * dt;
+  if (y >= floorY) {
+    over = y - floorY;
+    y = floorY - over;
+    vy = -vy * bounce;
+    vx *= 1 - fric;
+  }
+}
+[x, y]

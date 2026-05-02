@@ -1,0 +1,6 @@
+center = thisComp.layer("CenterLayer").position;
+radius = 500; // Change this value or connect it to a Slider
+speed = 2; // Change this value or connect it to a Slider
+x = center[0] + Math.cos(time * speed) * radius;
+y = center[1] + Math.sin(time * speed) * radius;
+[x, y];

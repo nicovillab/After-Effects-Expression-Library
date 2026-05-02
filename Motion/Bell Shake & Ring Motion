@@ -1,0 +1,10 @@
+interval = 2;
+shakeDur = 0.5;
+amp = 25;
+freq = 30;
+loopTime = time % interval;
+if (loopTime < shakeDur) {
+ Math.sin(loopTime * freq) * amp * (1 - loopTime/shakeDur);
+ } else {
+ 0;
+}

@@ -1,0 +1,1 @@
+"$" + Math.floor(1000 * Math.exp(time)).toString();

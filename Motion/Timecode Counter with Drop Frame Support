@@ -1,0 +1,6 @@
+fps = 30 // Insert frame rate here
+frames = Math.floor(time * fps);
+hours = Math.floor(frames / (fps * 3600));
+minutes = Math.floor((frames % (fps * 3600)) / (fps * 60));
+seconds = Math.floor((frames % (fps * 60)) / fps);
+frames = frames % fps;(hours < 10 ? "0" : "") + hours + ":" +(minutes < 10 ? "0" : "") + minutes + ":" +(seconds < 10 ? "0" : "") + seconds + ":" +(frames < 10 ? "0" : "") + frames;

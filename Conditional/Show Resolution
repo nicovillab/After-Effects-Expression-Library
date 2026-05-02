@@ -1,0 +1,1 @@
+thisComp.width + "x" + thisComp.height;

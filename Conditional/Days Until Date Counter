@@ -1,0 +1,16 @@
+targetMonth = 12; // 1 = Jan, 12 = Dec
+targetDay   = 31;
+targetYear  = new Date().getFullYear();
+today = new Date();
+// Convert to JS month index (0–11)
+jsMonth = targetMonth - 1;
+targetDate = new Date(targetYear, jsMonth, targetDay);
+// If date passed, count for next year
+if (today > targetDate) {
+ targetDate = new Date(targetYear + 1, jsMonth, targetDay);
+}
+// Calculate difference in days
+oneDay = 1000 * 60 * 60 * 24;
+diff = targetDate.getTime() - today.getTime();
+daysLeft = Math.ceil(diff / oneDay);
+daysLeft + " Days Left";

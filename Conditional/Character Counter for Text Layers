@@ -1,0 +1,2 @@
+myText = thisComp.layer("textLayer").text.sourceText;
+myText.length

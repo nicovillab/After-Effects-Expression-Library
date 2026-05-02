@@ -1,0 +1,2 @@
+fps = 1 / thisComp.frameDuration;
+fps % 1 === 0 ? fps.toFixed(0) : fps.toFixed(2);

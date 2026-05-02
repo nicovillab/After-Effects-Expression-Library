@@ -1,0 +1,1 @@
+Math.sin(time * 2) * 100

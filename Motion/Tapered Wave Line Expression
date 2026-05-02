@@ -1,0 +1,21 @@
+amp = effect("Amplitude")("Slider"); // max wave height (px)
+wavelength = effect("Wavelength")("Slider"); // px per cycle
+l = effect("Length")("Slider"); // total wave length (px)
+biasS = effect("Bias")("Slider"); // -100 = peak at left, 0 = center, 100 = right
+ptsCount = 200; // more points = smoother line but heavier rendering
+cycles = l / wavelength;
+b = clamp((biasS + 100) / 200, 0, 1);
+pts = [];
+for (i = 0; i < ptsCount; i++) {
+  t = i / (ptsCount - 1);
+  x = t * l - l / 2;
+  if (b <= 0) falloff = 1 - t;
+  else if (b >= 1) falloff = t;
+  else {
+    m = Math.max(b, 1 - b);
+    falloff = clamp(1 - Math.abs(t - b) / m, 0, 1);
+  }
+  y = amp * falloff * Math.sin(t * cycles * 2 * Math.PI);
+  pts.push([x, y]);
+}
+createPath(pts, [], [], false);

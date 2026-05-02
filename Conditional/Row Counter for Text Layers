@@ -1,0 +1,6 @@
+L = thisComp.layer("textLayer");
+var newStyle = L.text.sourceText.style;
+var myLeading = newStyle.autoLeading ? newStyle.fontSize * 1.2 : newStyle.leading;
+H = L.sourceRectAtTime(time, false).height;
+rowNo = Math.ceil(H / myLeading);
+rowNo;

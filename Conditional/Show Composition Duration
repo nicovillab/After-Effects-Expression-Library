@@ -1,0 +1,5 @@
+d = thisComp.duration;
+min = Math.floor(d / 60);
+sec = Math.floor(d % 60);
+fr = Math.floor((d % 1) / thisComp.frameDuration);
+(min < 10 ? "0" : "") + min + ":" + (sec < 10 ? "0" : "") + sec + ":" + (fr < 10 ? "0" : "") + fr;

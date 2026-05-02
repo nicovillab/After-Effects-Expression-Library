@@ -1,0 +1,15 @@
+w = 100; // Width of flame
+h = 200; // Height of flame
+noiseScale = 15; // How erratic the wind is
+windSpeed = 8; // Generate Noise for the tip of the flame
+n = noise([time * windSpeed, index]);
+pBottom = [0, h/2];
+pLeft = [-w/2, h/4];
+pRight = [w/2, h/4];
+// The Tip moves based on noise
+pTip = [n * noiseScale * 2, -h/2 + Math.abs(n) * noiseScale];
+points = [pBottom, pLeft, pTip, pRight];
+// Tangents for smooth curves
+inT = [[0,0], [0, h/3], [0, 0], [0, -h/3]];
+outT = [[0,0], [0, -h/3], [0, 0], [0, h/3]];
+createPath(points, inT, outT, true);

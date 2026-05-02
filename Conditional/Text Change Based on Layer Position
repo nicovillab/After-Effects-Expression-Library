@@ -1,0 +1,9 @@
+if (position[0] < thisComp.width / 2 && position[1] < thisComp.height / 2) {
+  "Top Left";
+} else if (position[0] > thisComp.width / 2 && position[1] < thisComp.height / 2) {
+  "Top Right";
+} else if (position[0] < thisComp.width / 2) {
+  "Bottom Left";
+} else {
+  "Bottom Right";
+}

@@ -1,0 +1,36 @@
+function getBoundingBox(layer) {
+var rect = layer.sourceRectAtTime(time, false); // Get the four corners of the layer in world space, considering rotation 
+var topLeft = layer.toWorld([rect.left, rect.top]); 
+var topRight = layer.toWorld([rect.left + rect.width, rect.top]);
+var bottomLeft = layer.toWorld([rect.left, rect.top + rect.height]); 
+var bottomRight = layer.toWorld([rect.left + rect.width, rect.top + rect.height]);
+return [topLeft, topRight, bottomRight, bottomLeft];
+}
+function layersOverlap() {
+var myCorners = getBoundingBox(thisLayer); 
+for (var i = 1; i <= thisComp.numLayers; i++) {
+if (i == index) continue; // Skip self 
+var otherLayer = thisComp.layer(i);
+if (!otherLayer.active) continue;
+var otherCorners = getBoundingBox(otherLayer); // Check if any corner of one layer is inside the bounds of the other 
+if (isAnyCornerInside(myCorners, otherCorners) || isAnyCornerInside(otherCorners, myCorners)) {
+return true;
+} } 
+return false;
+}
+function isAnyCornerInside(cornersA, cornersB) {
+for (var i = 0; i < cornersA.length; i++){
+var point = cornersA[i]; 
+if (isPointInside(point, cornersB)) {
+return true;
+} }
+return false;
+}
+function isPointInside(point, corners) { // Using a bounding box approach for simplicity; accurate for axis-aligned but approximate for rotated shapes
+var minX = Math.min(corners[0][0], corners[1][0], corners[2][0], corners[3][0]);
+var maxX = Math.max(corners[0][0], corners[1][0], corners[2][0], corners[3][0]);
+var minY = Math.min(corners[0][1], corners[1][1], corners[2][1], corners[3][1]);
+var maxY = Math.max(corners[0][1], corners[1][1], corners[2][1], corners[3][1]);
+return (point[0] >= minX && point[0] <= maxX && point[1] >= minY && point[1] <= maxY);
+} // Change opacity based on overlap; You can swap number 30 for any other 
+valuelayersOverlap() ? 30 : 100;

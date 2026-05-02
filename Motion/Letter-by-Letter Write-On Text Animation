@@ -1,0 +1,4 @@
+chars = text.sourceText.length;
+timePerChar = 0.1;
+visibleChars = Math.floor((time - inPoint) / timePerChar);
+text.sourceText.substr(0, visibleChars);

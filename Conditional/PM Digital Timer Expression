@@ -1,0 +1,26 @@
+// Define the starting time in hours, minutes, and seconds
+startHours = effect("hours")("Slider");
+startMinutes = effect("minutes")("Slider");
+startSeconds = effect("seconds")("Slider");
+// Convert the starting time into total seconds
+startTime = (startHours * 3600) + (startMinutes * 60) + startSeconds;
+// Get the current time in the composition
+currentTime = time - inPoint;
+// Calculate the elapsed time
+elapsedTime = currentTime + startTime;
+// Convert elapsed time to hours, minutes, and seconds
+hours = Math.floor(elapsedTime / 3600);
+minutes = Math.floor((elapsedTime % 3600) / 60);
+seconds = Math.floor(elapsedTime % 60);
+// Format the timer as HH:MM:SS
+formattedHours = hours < 10 ? "0" + hours : hours;
+formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+// Access AM/PM from dropdown menu
+timing = [" AM", " PM"];
+menu = effect("AM/PM")("Menu")
+amPm = timing[menu - 1]; // Adjust for 0-based array indexing
+// Combine the formatted hours, minutes, and seconds with AM/PM
+formattedTime = formattedHours + ":" + formattedMinutes + ":" + formattedSeconds + amPm;
+// Final output
+formattedTime;

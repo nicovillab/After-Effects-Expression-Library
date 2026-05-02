@@ -1,0 +1,13 @@
+amp = effect("Amplitude")("Slider"); // wave height (px)
+wavelength = effect("Wavelength")("Slider"); // px per cycle
+l = effect("Length")("Slider"); // total wave length (px)
+ptsCount = 200;  // change this up if you need even smoother curves
+pts = [];
+cycles = l / wavelength;
+for (i = 0; i < ptsCount; i++) {
+  t = i / (ptsCount - 1);
+  x = t * l - l / 2;
+  y = amp * Math.sin(t * cycles * 2 * Math.PI);
+  pts.push([x, y]);
+}
+createPath(pts, [], [], false);

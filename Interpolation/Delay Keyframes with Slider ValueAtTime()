@@ -1,0 +1,2 @@
+delay = thisComp.layer("Controls").effect("Delay")("Slider"); // pickwhip to your Delay Slider (in seconds) 
+valueAtTime(time-delay)

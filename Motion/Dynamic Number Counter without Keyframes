@@ -1,0 +1,11 @@
+startValue = 0; // Change this value if needed
+endValue = 99.99; // Change this value if needed
+animationDuration = 2; // Duration of animation in seconds
+decimals = 2; // Number of decimal places
+startTime = inPoint;
+endTime = startTime + animationDuration;
+t = clamp(time, startTime, endTime);
+animatedValue = linear(t, startTime, endTime, startValue, endValue);
+decimals = Math.round(decimals);
+roundedValue = animatedValue.toFixed(decimals);
+roundedValue;

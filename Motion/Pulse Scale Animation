@@ -1,0 +1,8 @@
+freq = 1;
+// Pulses per second
+amp = 5;
+// Pulse intensity
+base = 100;
+// Base scale
+pulse = Math.sin(time * freq * Math.PI * 2) * amp;
+[base + pulse, base + pulse];

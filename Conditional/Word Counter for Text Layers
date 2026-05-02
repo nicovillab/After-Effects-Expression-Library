@@ -1,0 +1,2 @@
+myText = thisComp.layer("Source").text.sourceText;
+myText.split(" ").length;

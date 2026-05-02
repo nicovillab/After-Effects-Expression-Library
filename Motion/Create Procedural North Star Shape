@@ -1,0 +1,14 @@
+innerRadius = 50;
+outerRadius = 300;
+points = 4;
+pts = [];
+for (i = 0; i < points * 2; i++) {
+ angle = (i / (points * 2)) * Math.PI * 2;
+ r = (i % 2 === 0) ? outerRadius : innerRadius;
+ // Add elongated vertical tail for North Star look
+ if (i === 0 || i === points) r *= 1.5;
+ x = Math.cos(angle) * r;
+ y = Math.sin(angle) * r;
+ pts.push([x, y]);
+}
+createPath(pts, [], [], true);

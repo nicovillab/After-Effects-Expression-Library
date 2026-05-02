@@ -1,0 +1,22 @@
+scaleDuration = 0.5; // Animation duration - You may connect this to a slider
+startValue = 0; // Start value
+endValue = 100; // End value
+overshootPower = 5; // Overshoot power in percentages
+overshootValue = endValue * (1 + overshootPower / endValue);
+if (time >= inPoint && time < inPoint + scaleDuration) {
+t = (time - inPoint) / scaleDuration;
+if (t <= 0.5) {
+animatedValue = easeOut(t, 0, 0.5, startValue, overshootValue);}
+else {
+animatedValue = ease(t, 0.5, 1, overshootValue, endValue);}}
+else if (time > outPoint - scaleDuration && time <= outPoint){
+t = (time - (outPoint - scaleDuration)) / scaleDuration;
+if (t <= 0.5) {
+animatedValue = ease(t, 0, 0.5, endValue, overshootValue);}
+else {
+animatedValue = ease(t, 0.5, 1, overshootValue, startValue);}}
+else if (time > outPoint) {
+animatedValue = startValue;}
+else {
+animatedValue = endValue;}
+[animatedValue, animatedValue];

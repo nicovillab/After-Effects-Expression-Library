@@ -1,0 +1,2 @@
+dropdown = thisLayer.effect("Dropdown Menu Control")("Menu");
+dropdown == 1 ? 100 : 0;
